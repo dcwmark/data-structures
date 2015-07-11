@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="US-ASCII">
+    <title>Palindrome</title>
+
+    <script type="text/javascript" src="../li_ds/li_ds.js"></script>
+    <script type="text/javascript" src="../stack/stack.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+LI_DS.prototype.palindrome = (function () {
+    'use strict';
+
+    function _isPalindrome(value) {
+        if (null === value || value === 'undefined' || value.length < 1) {
+            return null;
+        }
+        if (typeof value === 'object') {
+            return 'cannot evaluate object type';
+        }
+        console.log('value::' + JSON.stringify(value));
+
+        var stack = new Stack();
+
+        value = JSON.stringify(value);
+        var leng = value.length;
+        for (var i = 0; i < leng; i++) {
+            stack.push(value[i]);
+        }
+
+        var newVal = "";
+        while(stack.length() > 0) {
+            newVal += stack.pop().element;
+        }
+        console.log('newVal::' + newVal);
+
+        return value == newVal;
+    }
+
+    return {
+        isPalindrome: function (value) {
+            return _isPalindrome(value);
+        }
+    };
+}());
+
+var li_ds = new LI_DS();
+li_ds.algorithm = 'palindrome';
+console.log('li_ds::' + JSON.stringify(li_ds));
+
+var testValue = null, result = null;
+
+testValue = 123456;
+result = li_ds.palindrome.isPalindrome(testValue);
+console.log('Is:: ' + testValue
+          + '   palindrome:: ' + JSON.stringify(result));
+
+testValue = 'abcde';
+result = li_ds.palindrome.isPalindrome(testValue);
+console.log('Is:: ' + testValue
+                + '   palindrome:: ' + JSON.stringify(result));
+
+testValue = 1221221;
+result = li_ds.palindrome.isPalindrome(testValue);
+console.log('Is:: ' + testValue
+          + '   palindrome:: ' + JSON.stringify(result));
+
+testValue = 'racecar';
+result = li_ds.palindrome.isPalindrome(testValue);
+console.log('Is:: ' + testValue
+                + '   palindrome:: ' + JSON.stringify(result));
+
+testValue = {
+    'a': 123,
+    'z': 'xyz'
+};
+result = li_ds.palindrome.isPalindrome(testValue);
+console.log('Is:: ' + testValue
+                + '   palindrome:: ' + JSON.stringify(result));
+</script>
+
+</body>
+</html>

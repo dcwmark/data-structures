@@ -1,0 +1,24 @@
+{
+    "author": "Daniel Mark (Entaro Adun)",
+    "organization": "Lucidus Iter",
+    "name": "li_ds.linkedlist",
+    "version": "0.0.1",
+    "description": "A try at the old LinkedList",
+    "main": "linkedlist",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dcwmark/data-structures/tree/master/linkedlist"
+    },
+    "keywords": [
+        "linkedlist"
+    ],
+    "deDevependencies": {
+		"karma": "~0.12.0",
+		"jasmine-node": "~1.14.5",
+		"jasmine-node-karma": "~1.6.1",
+        "karma-jasmine": "~0.2.2"
+    },
+    "engines": {
+        "node": "*"
+    }
+}

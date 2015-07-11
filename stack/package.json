@@ -1,0 +1,18 @@
+{
+    "author": "Daniel Mark (Entaro Adun)",
+    "organization": "Lucidus Iter",
+    "name": "li_ds.stack",
+    "version": "0.0.1",
+    "description": "A try at the old Stack",
+    "main": "stack",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dcwmark/data-structures/tree/master/stack" },
+    "keywords": [
+        "stack"
+        ],
+    "dependencies": {},
+    "engines": {
+        "node": "*"
+    }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="US-ASCII">
+    <title>Two Stack Eval</title>
+
+    <script type="text/javascript" src="../li_ds/li_ds.js"></script>
+    <script type="text/javascript" src="../stack/stack.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+LI_DS.prototype.twoStackEval = (function () {
+    'use strict';
+
+    function numericCheck(value) {
+        if (null === value || value === 'undefined' || isNaN(value)) {
+            return false;
+        }
+
+        return typeof value === 'number';
+    }
+
+    function _evaluate(expression) {
+        var expressions = expression.split(' ');
+        var operands = new Stack();
+        var operators = new Stack();
+        
+        var leng = expressions.length, i, op;
+        for (i = 0; i < leng; i++) {
+            switch (op = expressions[i]) {
+                case '(':
+                    break;
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                case '**':
+                case 'sqrt':
+                    operators.push(op);
+                    break;
+                case ')':
+                    var operand = parseFloat(operands.pop().element);
+                    if (!numericCheck(operand)) {
+                        return 'position [' + i + '] expects to be numeric BUT '
+                             + 'found [' + JSON.stringify(operand) + ']';
+                    }
+                    var operator = operators.pop().element;
+                    
+                    switch (operator) {
+                        case '+':
+                            operand =
+                                parseFloat(operands.pop().element) + operand;
+                            break;
+                        case '-':
+                            operand =
+                                parseFloat(operands.pop().element) - operand;
+                            break;
+                        case '**':
+                            operand =
+                                Math.pow(parseFloat(
+                                            operands.pop().element), operand);
+                            break;
+                        case '*':
+                            operand =
+                                parseFloat(operands.pop().element) * operand;
+                            break;
+                        case '/':
+                            operand =
+                                parseFloat(operands.pop().element) / operand;
+                            break;
+                        case 'sqrt':
+                            operand = Math.sqrt(operand);
+                            break;
+                    }
+                    operands.push(operand);
+                    break;
+                default:
+                    operands.push(op);
+            }
+        }
+        return operands.pop().element;
+    }
+
+    return {
+        evaluate: function (expression) {
+            return _evaluate(expression);
+        }
+    };
+}());
+
+var li_ds = new LI_DS();
+li_ds.algorithm = 'two_stack_eval';
+console.log('li_ds::' + JSON.stringify(li_ds));
+
+console.log(li_ds.twoStackEval.evaluate('( ( 2 ** 3 ) + ( 5 * 4 ) )'));
+console.log(li_ds.twoStackEval.evaluate('( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )'));
+console.log(li_ds.twoStackEval.evaluate('( ( 1 + sqrt ( 5.0 ) ) / 2.0 )'));
+</script>
+
+</body>
+</html>

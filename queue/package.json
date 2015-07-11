@@ -1,0 +1,23 @@
+{
+  "author": "Daniel Mark (Entaro Adun)",
+  "organization": "Lucidus Iter",
+  "name": "li_ds.queue",
+  "version": "0.0.1",
+  "description": "A try at the old Queue",
+  "main": "queue",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dcwmark/data-structures/tree/master/queue"
+  },
+  "keywords": [
+    "queue"
+  ],
+  "dependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "devDependencies": {
+    "karma-requirejs": "^0.2.2",
+    "requirejs": "^2.1.15"
+  }
+}

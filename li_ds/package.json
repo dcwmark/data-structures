@@ -1,0 +1,18 @@
+{
+    "author": "Daniel Mark (Entaro Adun)",
+    "organization": "Lucidus Iter",
+    "name": "li_ds",
+    "version": "0.0.1",
+    "description": "Lucidus Iter -- Data Structures",
+    "main": "li_ds",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dcwmark/data-structures/tree/master/linkedlist" },
+    "keywords": [
+        "li_ds"
+    ],
+    "dependencies": {},
+    "engines": {
+        "node": "*"
+    }
+}

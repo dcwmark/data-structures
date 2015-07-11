@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="US-ASCII">
+    <title>Radix</title>
+
+    <script type="text/javascript" src="../li_ds/li_ds.js"></script>
+    <script type="text/javascript" src="../queue/queue.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+LI_DS.radix = (function () {
+    'use strict';
+    
+    var bins = [];
+    
+    for(var i = 0; i < 10; i++) {
+        bins[i] = new Queue();
+    }
+    
+    function _lsdSort(list) {
+        
+        var done = false,
+            mod = 10,
+            div = 1,
+            lengList = list.length,
+            lengBins = bins.length,
+            i;
+        
+        console.log('Before radix.lsd::' + list);
+        for( ; ! done ; mod *= 10, div *= 10) {
+            done = true;
+
+            for( i = 0; i < lengList; i++ ) {
+                if ( div < 10 ) {
+                    if ( ! list[i] ) {
+                        throw 'List posn(' + i + ') '
+                            + 'contains null or undefined.';
+                    }
+                    if ( isNaN(list[i]) ) {
+                        throw 'List posn(' + i + ') is not a number.';
+                    }
+                }
+
+                var bin = Math.floor( list[i] % mod / div );
+                bins[bin].enqueue(list[i]);
+                
+                if (bin > 0) {
+                    done = false;
+                }
+            }
+            
+            var dequeued;
+            list = [];
+            for ( i = 0; i < lengBins; i++ ) {
+                while ( dequeued = bins[i].dequeue() ) {
+                    list.push(dequeued);
+                }
+            }
+        }
+        
+        console.log('After radix.lsd::' + list);
+        return list;
+    }
+    
+    function debugBins(numb, bin) {
+        console.log('processing=[' + numb + '] '
+                  + 'using bin=[' + bin + ']');
+        console.log('bins[' + bin + ']::' + bins[bin].list());
+    }
+    
+    return {
+        lsdSort: function(list) {
+            return _lsdSort(list);
+        }
+    };
+}());
+
+var unsortedList = [ 10, 65, 85, 8, 25, 69, 101 ];
+var expectedList = [ 8, 10, 25, 65, 69, 85, 101 ];
+
+var li_ds = new LI_DS();
+var result = LI_DS.radix.lsdSort(unsortedList);
+
+
+</script>
+
+</body>
+</html>

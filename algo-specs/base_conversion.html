@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="US-ASCII">
+    <title>Base Conversion</title>
+
+    <script type="text/javascript" src="../li_ds/li_ds.js"></script>
+    <script type="text/javascript" src="../stack/stack.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+LI_DS.prototype.baseConversion = function () {
+    'use strict';
+
+    function numericCheck(value) {
+        if (null === value || value === 'undefined' || isNaN(value)) {
+            return false;
+        }
+
+        return typeof value === 'number';
+    }
+
+    function acceptableBase(base) {
+        return (base > 1 && base < 10);
+    }
+
+    function _convert(numb, base) {
+        if (!numericCheck(numb)) {
+            return 'arg[0]:: ' + numb
+                 + ' number to convert needs to be numeric';
+        }
+        if (!numericCheck(base)) {
+            return 'arg[1]:: ' + base
+                 + ' base of conversion needs to be numeric';
+        }
+
+        if (!acceptableBase(base)) {
+            return 'base of:: ' + base
+                 + ' conversion is not acceptable at this time';
+        }
+
+        var stack = new Stack();
+        
+        while (numb) {
+            var quotient = Math.floor(numb / base);
+            stack.push(numb - (quotient * base));
+            numb = quotient;
+        };
+        var result = "";
+        while (stack.length()) {
+            result += stack.pop();
+        };
+        return result;
+    }
+
+    return {
+        convert: function (numb, base) {
+            return _convert(numb, base);
+        }
+    };
+}();
+
+var li_ds = new LI_DS();
+li_ds.algorithm = 'base_conversion';
+
+console.log('li_ds::' + JSON.stringify(li_ds));
+
+var result = null;
+
+result = li_ds.baseConversion.convert();
+console.log('result:: ' + JSON.stringify(result));
+result = li_ds.baseConversion.convert(1);
+console.log('result:: ' + JSON.stringify(result));
+result = li_ds.baseConversion.convert(1, 'a');
+console.log('result:: ' + JSON.stringify(result));
+result = li_ds.baseConversion.convert(1, 1);
+console.log('result:: ' + JSON.stringify(result));
+result = li_ds.baseConversion.convert(1, 10);
+console.log('result:: ' + JSON.stringify(result));
+result = li_ds.baseConversion.convert(1, 2);
+console.log('result:: ' + JSON.stringify(result));
+result = li_ds.baseConversion.convert(32, 2);
+console.log('result:: ' + JSON.stringify(result));
+result = li_ds.baseConversion.convert(125, 8);
+console.log('result:: ' + JSON.stringify(result));
+result = li_ds.baseConversion.convert(77, 3);
+console.log('result:: ' + JSON.stringify(result));
+</script>
+
+</body>
+</html>
