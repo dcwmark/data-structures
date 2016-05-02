@@ -1,3 +1,6 @@
+/**
+ * data-structures/algo-specs/specs/algo.spec.js
+**/
 var LI_DS = require('../../li_ds');
 LI_DS.algo= require('../algo');
 

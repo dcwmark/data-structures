@@ -1,0 +1,27 @@
+{
+  "name": "data-structures",
+  "version": "0.0.1",
+  "description": "data-structures ===============",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcwmark/data-structures.git"
+  },
+  "author": "Entaro Adun",
+  "license": "ISC",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/dcwmark/data-structures/issues"
+  },
+  "homepage": "https://github.com/dcwmark/data-structures#readme",
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-jasmine": "^0.3.8"
+  },
+  "dependencies": {}
+}

@@ -1,5 +1,5 @@
 /**
- * Algo
+ * data-structures/algo-specs/algo.js
 **/
 'use strict';
 
