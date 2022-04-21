@@ -48,9 +48,9 @@ LI_DS.algo = (function () {
   function _listPrime(occurance) {
     if (!_isInteger(occurance)) { return null; }
 
-    var result = [2, 3],
-      rLeng = result.length,
-      i = 5;
+    var result = [2, 3];
+    var rLeng = result.length;
+    var i = 5;
     do {
       if (_isPrime(i)) {
         result.push(i);
@@ -63,8 +63,8 @@ LI_DS.algo = (function () {
   }
 
   function _primeFactors(valu) {
-    var factors = [],
-      divisor = 2;
+    var factors = [];
+    var divisor = 2;
 
     while (valu > 2) {
       if (valu % divisor === 0) {
