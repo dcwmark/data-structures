@@ -27,16 +27,15 @@ LI_DS.algo = (function () {
   function _isPrime(valu) {
     if (valu === 0 || valu === 1) { return false; }
     if (valu === 2 || valu === 3) { return true; }
-    var oddestPrime = 2;
+    const oddestPrime = 2;
     if (valu % oddestPrime === 0) { return false; }
 
     var i = 3;
-
     /**
       Any number will not be divisible
       by a number bigger than half of itself. 
     **/
-    var limit = Math.sqrt(valu);
+    const limit = Math.sqrt(valu);
 
     for (; i <= limit; i += 2) {
       if (valu % i === 0) { return false; }
